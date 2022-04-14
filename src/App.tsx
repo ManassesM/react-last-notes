@@ -3,18 +3,22 @@ import Logo from './components/Logo'
 import Actions from './components/Actions'
 import NotesArea from './components/NotesArea'
 import Notes from './components/Notes'
+import NoteListPovider from './context/NoteListContext'
+import NoteFormProvider from './context/NoteForm'
 
 function App() {
 	return (
-		<div className='App'>
+		<NoteFormProvider>
 			<Header>
 				<Logo />
 				<Actions />
 			</Header>
-			<NotesArea>
-				<Notes />
-			</NotesArea>
-		</div>
+			<NoteListPovider>
+				<NotesArea>
+					<Notes />
+				</NotesArea>
+			</NoteListPovider>
+		</NoteFormProvider>
 	)
 }
 

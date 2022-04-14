@@ -1,4 +1,5 @@
 import { ReactChild } from 'react'
+import { useNoteForm } from '../../context/NoteForm'
 import NoteForm from '../NoteForm'
 import * as S from './styles'
 
@@ -7,10 +8,12 @@ interface Props {
 }
 
 const NotesArea = ({ children }: Props) => {
+	const { showForm } = useNoteForm()
+
 	return (
 		<S.Article>
 			{children}
-			<NoteForm />
+			{showForm && <NoteForm />}
 		</S.Article>
 	)
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Note = styled.div`
+export const Note = styled.div<{ highlight: boolean }>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,6 +9,7 @@ export const Note = styled.div`
 	height: 280px;
 
 	padding: 15px;
+	border: ${({ highlight }) => highlight && '2px solid var(--dark-gray)'};
 
 	background: var(--note-background);
 	border-radius: 10px;
@@ -56,6 +57,7 @@ export const Description = styled.p`
 
 	text-overflow: ellipsis;
 
+	/* scrollbar */
 	&::-webkit-scrollbar {
 		width: 5px;
 	}
