@@ -6,8 +6,8 @@ interface Props {
 	children: ReactChild[]
 }
 
-const Header = (props: Props) => {
-	return <S.Header>{props.children}</S.Header>
+const Header = ({ children }: Props) => {
+	return <S.Header>{children}</S.Header>
 }
 
 export default Header
