@@ -22,8 +22,7 @@ export default function HighlightProvider({ children }: HighlightProviderType) {
 }
 
 export function useHighlight() {
-	const context = useContext(HighlightContext)
-	const { isHighlighted, setIsHighlighted } = context
+	const { isHighlighted, setIsHighlighted } = useContext(HighlightContext)
 
 	return { isHighlighted, setIsHighlighted }
 }

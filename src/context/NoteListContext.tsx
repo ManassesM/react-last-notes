@@ -1,16 +1,9 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
-
-type Note = {
-	id: string
-	title: string
-	description: string
-	highlight?: boolean
-	setHighlight?: (_: boolean) => void
-}
+import { NoteProps } from '../types/Note'
 
 type NoteListContextType = {
-	noteList: Note[]
-	setNoteList: (_: Note[]) => void
+	noteList: NoteProps[]
+	setNoteList: (_: NoteProps[]) => void
 }
 
 type NoteListProviderType = {
@@ -20,7 +13,7 @@ type NoteListProviderType = {
 const NoteListContext = createContext({} as NoteListContextType)
 
 export default function NoteListPovider({ children }: NoteListProviderType) {
-	const [noteList, setNoteList] = useState<Note[]>([])
+	const [noteList, setNoteList] = useState<NoteProps[]>([])
 
 	return (
 		<NoteListContext.Provider value={{ noteList, setNoteList }}>
@@ -30,8 +23,7 @@ export default function NoteListPovider({ children }: NoteListProviderType) {
 }
 
 export function useNoteList() {
-	const context = useContext(NoteListContext)
-	const { noteList, setNoteList } = context
+	const { noteList, setNoteList } = useContext(NoteListContext)
 
 	return { noteList, setNoteList }
 }

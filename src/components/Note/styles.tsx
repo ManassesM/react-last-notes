@@ -60,6 +60,7 @@ export const Description = styled.p`
 	overflow-y: scroll;
 
 	text-overflow: ellipsis;
+	overflow-wrap: break-word;
 
 	/* scrollbar */
 	&::-webkit-scrollbar {

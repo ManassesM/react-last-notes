@@ -7,7 +7,8 @@ import { useNoteList } from '../../context/NoteListContext'
 import * as S from './styles'
 
 const Actions = () => {
-	const { showForm, setShowForm, setTitle, setDescription } = useNoteForm()
+	const { setShowForm, setTitle, setDescription } = useNoteForm()
+
 	const { noteList, setNoteList } = useNoteList()
 	const { isHighlighted, setIsHighlighted } = useHighlight()
 
@@ -19,7 +20,7 @@ const Actions = () => {
 
 	function handleCreate() {
 		setShowForm(true)
-    clearForm()
+		clearForm()
 	}
 
 	function handleEdit() {
@@ -43,11 +44,11 @@ const Actions = () => {
 
 	return (
 		<S.Actions>
-			<S.ActionButton disabled={showForm}>
-				<FaPlus onClick={() => handleCreate()} />
+			<S.ActionButton>
+				<FaPlus onClick={handleCreate} />
 			</S.ActionButton>
 			<S.ActionButton disabled={!!!isHighlighted}>
-				<FaPencilAlt onClick={() => handleEdit()} />
+				<FaPencilAlt onClick={handleEdit} />
 			</S.ActionButton>
 			<S.ActionButton disabled={!!!isHighlighted}>
 				<FaTrash onClick={handleDelete} />

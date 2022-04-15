@@ -1,10 +1,10 @@
-import { ReactChild } from 'react'
+import { ReactNode } from 'react'
 import { useNoteForm } from '../../context/NoteForm'
 import NoteForm from '../NoteForm'
 import * as S from './styles'
 
 interface Props {
-	children: ReactChild
+	children: ReactNode
 }
 
 const NotesArea = ({ children }: Props) => {

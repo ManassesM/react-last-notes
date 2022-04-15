@@ -1,9 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 
-type NoteFormProviderType = {
-	children: ReactNode
-}
-
 type NoteFormContextType = {
 	showForm: boolean
 	setShowForm: (_: boolean) => void
@@ -11,6 +7,10 @@ type NoteFormContextType = {
 	setTitle: (_: string) => void
 	description: string
 	setDescription: (_: string) => void
+}
+
+type NoteFormProviderType = {
+	children: ReactNode
 }
 
 const NoteFormContext = createContext({} as NoteFormContextType)
@@ -37,7 +37,6 @@ export default function NoteFormProvider({ children }: NoteFormProviderType) {
 }
 
 export function useNoteForm() {
-	const context = useContext(NoteFormContext)
 	const {
 		showForm,
 		setShowForm,
@@ -45,7 +44,7 @@ export function useNoteForm() {
 		setTitle,
 		description,
 		setDescription,
-	} = context
+	} = useContext(NoteFormContext)
 
 	return { showForm, title, description, setShowForm, setTitle, setDescription }
 }

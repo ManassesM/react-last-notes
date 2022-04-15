@@ -1,9 +1,9 @@
-import { ReactChild } from 'react'
+import { ReactNode } from 'react'
 
 import * as S from './styles'
 
 interface Props {
-	children: ReactChild[]
+	children: ReactNode
 }
 
 const Header = ({ children }: Props) => {
