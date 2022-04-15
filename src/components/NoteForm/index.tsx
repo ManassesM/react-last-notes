@@ -1,3 +1,4 @@
+import { useHighlight } from '../../context/HighlightContext'
 import { useNoteForm } from '../../context/NoteForm'
 import { useNoteList } from '../../context/NoteListContext'
 
@@ -5,11 +6,12 @@ import * as S from './styles'
 
 const NoteForm = () => {
 	const { noteList, setNoteList } = useNoteList()
+	const { isHighlighted } = useHighlight()
 	const { title, setTitle, description, setDescription, setShowForm } =
 		useNoteForm()
 
-	const inputTitleHandler = (e: any) => setTitle(e.target.value)
-	const inputDescriptionHandler = (e: any) => setDescription(e.target.value)
+	const hanldeInputTitle = (e: any) => setTitle(e.target.value)
+	const handleInputDescription = (e: any) => setDescription(e.target.value)
 
 	function clearForm() {
 		setTitle('')
@@ -19,16 +21,26 @@ const NoteForm = () => {
 	function handleSubmit(e: any) {
 		e.preventDefault()
 
-		setNoteList([
-			...noteList,
-			{
-				id: String(Math.floor(Math.random() * 1000)),
-				title,
-				description,
-			},
-		])
+		if (isHighlighted) {
+			noteList.map((note) => {
+				if (note.id === isHighlighted) {
+					note.title = title
+					note.description = description
+				}
+			})
 
-		clearForm()
+			setNoteList([...noteList])
+		} else {
+			setNoteList([
+				...noteList,
+				{
+					id: String(Math.floor(Math.random() * 1000)),
+					title,
+					description,
+				},
+			])
+			clearForm()
+		}
 	}
 
 	return (
@@ -38,7 +50,7 @@ const NoteForm = () => {
 				<S.Input
 					id='title'
 					value={title}
-					onChange={inputTitleHandler}
+					onChange={hanldeInputTitle}
 					type='text'
 					placeholder='Provide a title'
 				/>
@@ -48,7 +60,7 @@ const NoteForm = () => {
 				<S.TextArea
 					id=''
 					value={description}
-					onChange={inputDescriptionHandler}
+					onChange={handleInputDescription}
 					rows={10}
 					placeholder='Type your note'
 				/>

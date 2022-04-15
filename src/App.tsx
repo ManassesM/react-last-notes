@@ -5,18 +5,21 @@ import NotesArea from './components/NotesArea'
 import Notes from './components/Notes'
 import NoteListPovider from './context/NoteListContext'
 import NoteFormProvider from './context/NoteForm'
+import HighlightProvider from './context/HighlightContext'
 
 function App() {
 	return (
 		<NoteFormProvider>
-			<Header>
-				<Logo />
-				<Actions />
-			</Header>
 			<NoteListPovider>
-				<NotesArea>
-					<Notes />
-				</NotesArea>
+				<HighlightProvider>
+					<Header>
+						<Logo />
+						<Actions />
+					</Header>
+					<NotesArea>
+						<Notes />
+					</NotesArea>
+				</HighlightProvider>
 			</NoteListPovider>
 		</NoteFormProvider>
 	)

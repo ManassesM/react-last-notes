@@ -1,7 +1,7 @@
-import { createContext, ReactChild, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 
 type NoteFormProviderType = {
-	children: ReactChild[]
+	children: ReactNode
 }
 
 type NoteFormContextType = {

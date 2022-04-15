@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const Note = styled.div<{ highlight: boolean }>`
+export const Note = styled.div<{
+	id: string
+	isHighlighted: string
+}>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,7 +12,8 @@ export const Note = styled.div<{ highlight: boolean }>`
 	height: 280px;
 
 	padding: 15px;
-	border: ${({ highlight }) => highlight && '2px solid var(--dark-gray)'};
+	border: ${({ id, isHighlighted }) =>
+		id === isHighlighted && '2px solid var(--dark-gray)'};
 
 	background: var(--note-background);
 	border-radius: 10px;

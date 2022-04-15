@@ -1,4 +1,4 @@
-import { createContext, ReactChild, useContext, useState } from 'react'
+import { createContext, ReactNode, useContext, useState } from 'react'
 
 type Note = {
 	id: string
@@ -14,7 +14,7 @@ type NoteListContextType = {
 }
 
 type NoteListProviderType = {
-	children: ReactChild
+	children: ReactNode
 }
 
 const NoteListContext = createContext({} as NoteListContextType)

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNoteForm } from '../../context/NoteForm'
+import { useHighlight } from '../../context/HighlightContext'
 
 import * as S from './styles'
 
@@ -11,15 +11,15 @@ interface NoteProps {
 
 const Note = ({ id, title, description }: NoteProps) => {
 	const [highlight, setHighlight] = useState(false)
-	const { setShowForm } = useNoteForm()
+	const { isHighlighted, setIsHighlighted } = useHighlight()
 
 	return (
 		<S.Note
 			id={id}
-			highlight={highlight}
+			isHighlighted={isHighlighted}
 			onClick={() => {
 				setHighlight(!highlight)
-				setShowForm(true)
+				setIsHighlighted(id)
 			}}
 		>
 			<h2>{title}</h2>
